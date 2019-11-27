@@ -27,9 +27,8 @@ class TestSalesforceUtil {
 
     static void clickButton(String name) {
         SelenideElement newButton = $(byXpath("//a[contains(@title,'" + name + "')]"));
-        newButton.should(Condition.appear);
+        newButton.waitUntil(Condition.appear, 5000);
         newButton.click();
-        System.out.println("hello");
     }
 
     static void openTab(String name) {
