@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 
 import java.net.URISyntaxException;
 
-import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -26,9 +26,11 @@ class TestSalesforceUtil {
     }
 
     static void clickButton(String name) {
-        SelenideElement newButton = $(byXpath("//a[contains(@title,'" + name + "')]"));
-        newButton.waitUntil(Condition.appear, 5000);
-        newButton.click();
+        $(byTitle(name)).waitUntil(Condition.exist, 5000).click();
+
+        if ($(".slds-modal__container").waitUntil(Condition.exist, 2000).exists()) {
+            $(byTitle(name)).waitUntil(Condition.exist, 5000).click();
+        }
     }
 
     static void openTab(String name) {
