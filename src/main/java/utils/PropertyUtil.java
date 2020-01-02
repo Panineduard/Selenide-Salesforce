@@ -1,11 +1,13 @@
+package utils;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-class PropertyUtil {
+public class PropertyUtil {
     private static Properties property = getProperties();
 
-    public static String getProperty(String name) {
+    public static String getPropertyByName(String name) {
         return property.getProperty(name);
     }
 
